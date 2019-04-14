@@ -1,5 +1,5 @@
-const path = require('path');
-const buble = require('rollup-plugin-buble');
+
+const babel = require('rollup-plugin-babel');
 
 export default {
     input: 'src/index.js',
@@ -8,6 +8,15 @@ export default {
         format: 'iife'
     },
     plugins: [
-        buble()
+        babel({
+            "presets": [
+                ["@babel/preset-env", {
+                    "modules": false
+                }],
+            ],
+            "plugins": [
+                "transform-object-rest-spread"
+            ]
+        })
     ],
 }
